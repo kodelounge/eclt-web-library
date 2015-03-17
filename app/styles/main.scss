@@ -40,7 +40,7 @@ body.open {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #4285f4;
+  background-color: #00B8A7;
   overflow: hidden;
   z-index: 1;
 }
@@ -153,7 +153,7 @@ ol {
   bottom: 0;
   width: 250px;
   height: 100%;
-  background-color: #3367D6;
+  background-color: #00B8A7;
   color: #fefefe;
   -webkit-transform: translate(-250px, 0);
           transform: translate(-250px, 0);
@@ -181,7 +181,7 @@ main {
 
 .navdrawer-container h4 {
   background-color: white;
-  color: #3367D6;
+  color: #00B8A7;
 }
 
 .navdrawer-container ul {
@@ -230,6 +230,18 @@ main {
   min-height: 100%;
 }
 
+.navdrawer-container {
+  ul {
+    li.app-logo{
+      display: none;
+    }
+  }
+}
+
+.app-bar-logo {
+  opacity: .7;
+}
+
 /** Larger Screens - desktops and tablets **/
 @media all and (min-width: 990px) {
   .app-bar {
@@ -248,7 +260,7 @@ main {
     max-width: 864px;
     padding: 0 16px;
     box-sizing: border-box;
-    background-color: #4285f4;
+    background-color: #00B8A7;
   }
 
   .app-bar .logo {
@@ -291,6 +303,17 @@ main {
     display: none;
   }
 
+  .navdrawer-container {
+      ul {
+        li.app-logo{
+        display: block;
+        .app-bar-logo {
+          display: block;
+        }
+      }
+    }
+  }
+
   .navdrawer-container ul {
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -304,6 +327,14 @@ main {
 
   .navdrawer-container ul li {
     border: none;
+  }
+
+  .app-bar-logo {
+      display: none;
+  }
+
+  .app-logo {
+   margin: 7px 20px;
   }
 
   main {
