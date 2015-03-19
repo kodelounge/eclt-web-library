@@ -4,7 +4,51 @@
 *
 **/
 
+//this is the generation of grid classes for small view 0-619px
+@include small-only {
+  // Generating grid classes for medium view
+  @for $i from 1 through $smallColCount {
+    .g-small--#{$i} {
+      @include rule--col(small);
+      width: ($smallColWidth*$i) + ($smallGutterWidth*($i + -1));
+      @if $i == $smallColCount { margin-right: 0; }
+    }
 
+    @if $i < $smallColCount {
+      .g-small--push-#{$i} {
+        margin-left: ($smallColWidth*$i) + ($smallGutterWidth*$i);
+      }
+      .g-small--pull-#{$i} {
+        margin-right: ($smallColWidth*$i) + ($smallGutterWidth*$i);
+      }
+    }
+  }
+
+  .g-small--full {
+    @include rule--col(small);
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .g--third {
+    @include rule--col(small);
+    width: $smallColWidth;
+  }
+
+  .g--half,
+  .g-small--half {
+    @include rule--col(small);
+    width: 50% - $smallGutterWidth/2;
+  }
+
+  .g-small--last { margin-right: 0; }
+  .g-small--last + .g-small--half { clear: left; }
+
+  .g--pull-half { margin-right: 50% + $smallGutterWidth/2; }
+}
+
+
+//here starts the medium
 @include medium-only {
   // Generating grid classes for medium view
   @for $i from 1 through $mediumColCount {
@@ -47,7 +91,7 @@
   .g--pull-half { margin-right: 50% + $mediumGutterWidth/2; }
 }
 
-
+//this is the grid system for wide screen 800-1200px
 @include wide {
   // Generating grid classes for wide view
   @for $i from 1 through $wideColCount {
@@ -89,6 +133,48 @@
   .g--pull-half { margin-right: 50% + $wideGutterWidth/2; }
 }
 
+//this is the grid system for the huge system 1200px and more
+@include huge {
+  // Generating grid classes for wide view
+  @for $i from 1 through $hugeColCount {
+    .g-huge--#{$i} {
+      @include rule--col(huge);
+      width: ($hugeColWidth*$i) + ($hugeGutterWidth*($i + -1));
+      @if $i == $hugeColCount { margin-right: 0; }
+    }
+
+    @if $i < $hugeColCount {
+      .g-huge--push-#{$i} {
+        margin-left: ($hugeColWidth*$i) + ($hugeGutterWidth*$i);
+      }
+      .g-huge--pull-#{$i} {
+        margin-right: ($hugeColWidth*$i) + ($hugeGutterWidth*$i);
+      }
+    }
+  }
+
+  .g-huge--last { margin-right: 0; }
+
+  .g-huge--full {
+    @include rule--col(huge);
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .g--third {
+    @include rule--col(huge);
+    width: 30.8%;
+  }
+
+  .g--half,
+  .g-huge--half {
+    @include rule--col(huge);
+    width: 50% - $hugeGutterWidth/2;
+  }
+
+  .g--pull-half { margin-right: 50% + $hugeGutterWidth/2; }
+}
+//Grid system ends here
 
 // This is a global 'last' class
 // to be used with global grid classes, such as 'half' or 'third'

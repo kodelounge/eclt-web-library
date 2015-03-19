@@ -7,19 +7,29 @@
 /*==========  VARIABLES  ==========*/
 
   // Defining breakpoints
+  $small:320px !default;
   $medium: 620px !default;
   $wide: 800px !default;
-  $huge: 1600px !default;
+  $huge: 1200px !default;
+  $smallContainer:360px !default;
   $mediumContainer: 688px !default;
   $wideContainer: 864px !default;
+  $hugeContainer: 1280px !default;
+
 
   // Defining grid sizes
+  $smallColCount: 3 !default;
+  $smallColWidth: 30.3% !default;
+  $smallGutterWidth: 4.5% !default;
   $mediumColCount: 3 !default;
   $mediumColWidth: 30.3% !default;
   $mediumGutterWidth: 4.5% !default;
   $wideColCount: 4 !default;
   $wideColWidth: 22.2% !default;
   $wideGutterWidth: 3.7% !default;
+  $hugeColCount: 4 !default;
+  $hugeColWidth: 22.2% !default;
+  $hugeGutterWidth: 3.7% !default;
 
   // Defining colors
   $colorBlue: #3372df !default;
@@ -111,6 +121,7 @@
   }
 
   // Just some helpers...
+
   @mixin small-only { @include media-query(small) { @content }; }
   @mixin medium { @include media-query(medium) { @content }; }
   @mixin medium-only { @include media-query(medium-only) { @content }; }
@@ -130,6 +141,11 @@
     margin-left: auto;
     margin-right: auto;
 
+    @include small-only {
+      padding-left: 4.8%;
+      padding-right: 4.8%;
+      max-width: $smallContainer;
+    }
 
     @include medium {
       padding-left: 4.8%;
@@ -141,6 +157,12 @@
       padding-left: 4.4%;
       padding-right: 4.4%;
       max-width: $wideContainer;
+    }
+
+    @include huge {
+      padding-left: 4.4%;
+      padding-right: 4.4%;
+      max-width: $hugeContainer;
     }
   }
 
@@ -405,6 +427,11 @@
 
   // Grid CSS rules
   @mixin rule--col($mediaQuery) {
+
+    @if $mediaQuery == small {
+      float: left;
+      margin-right: $smallGutterWidth;
+    }
     @if $mediaQuery == medium {
       float: left;
       margin-right: $mediumGutterWidth;
@@ -413,5 +440,10 @@
     @if $mediaQuery == wide {
       float: left;
       margin-right: $wideGutterWidth;
+    }
+
+    @if $mediaQuery == huge {
+      float: left;
+      margin-right: $hugeGutterWidth;
     }
   }
